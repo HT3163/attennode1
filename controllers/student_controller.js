@@ -42,7 +42,6 @@ const studentLogIn = async (req, res) => {
                 student = await student.populate("school", "schoolName")
                 student = await student.populate("sclassName", "sclassName")
                 student.password = undefined;
-                student.examResult = undefined;
                 student.attendance = undefined;
                 res.send(student);
             } else {
@@ -74,10 +73,10 @@ const getStudents = async (req, res) => {
 
 const getStudentDetail = async (req, res) => {
     try {
+        console.log(req.params.id)
         let student = await Student.findById(req.params.id)
             .populate("school", "schoolName")
             .populate("sclassName", "sclassName")
-            .populate("examResult.subName", "subName")
             .populate("attendance.subName", "subName sessions");
         if (student) {
             student.password = undefined;
