@@ -143,32 +143,6 @@ const updateStudent = async (req, res) => {
     }
 }
 
-const updateExamResult = async (req, res) => {
-    const { subName, marksObtained } = req.body;
-
-    try {
-        const student = await Student.findById(req.params.id);
-
-        if (!student) {
-            return res.send({ message: 'Student not found' });
-        }
-
-        const existingResult = student.examResult.find(
-            (result) => result.subName.toString() === subName
-        );
-
-        if (existingResult) {
-            existingResult.marksObtained = marksObtained;
-        } else {
-            student.examResult.push({ subName, marksObtained });
-        }
-
-        const result = await student.save();
-        return res.send(result);
-    } catch (error) {
-        res.status(500).json(error);
-    }
-};
 
 const studentAttendance = async (req, res) => {
     const { subName, status, date } = req.body;
@@ -286,7 +260,6 @@ module.exports = {
     updateStudent,
     studentAttendance,
     deleteStudentsByClass,
-    updateExamResult,
 
     clearAllStudentsAttendanceBySubject,
     clearAllStudentsAttendance,

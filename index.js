@@ -33,17 +33,6 @@ app.listen(PORT, () => {
     console.log(`Server started at port no. ${PORT}`)
 })
 
-// app.get('/.netlify/functions/index',(req,res)=>{
-//     return res.json({
-//         messages: "Hello World!21"
-//     })
-// })
-// const handler = serverless(app);
-
-// module.exports.handler = async(event,context)=>{
-//     const result = await handler(event,context);
-//     return result;
-// }
 
 
 

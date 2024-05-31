@@ -27,18 +27,6 @@ const studentSchema = new mongoose.Schema({
         type: String,
         default: "Student"
     },
-    examResult: [
-        {
-            subName: {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'subject',
-            },
-            marksObtained: {
-                type: Number,
-                default: 0
-            }
-        }
-    ],
     attendance: [{
         date: {
             type: Date,
